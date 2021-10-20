@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IBuzzFizz } from '../../models/buzzfizz';
 
 @Component({
   selector: 'app-buzzfizz',
@@ -9,6 +10,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 export class BuzzfizzComponent implements OnInit {
 
   public outputArray: string[] = [];
+  #output: IBuzzFizz = new IBuzzFizz();
 
   public form!: FormGroup;
 
@@ -31,13 +33,7 @@ export class BuzzfizzComponent implements OnInit {
     this.outputArray = [];
 
     for (let index = 1; index < this.formControls.upToValue.value + 1; index++) {
-      let output: string = '';
-
-      if (index % 3 === 0) { output += this.formControls.fizz.value; }
-      if (index % 5 === 0) { output += this.formControls.buzz.value; }
-      if (output.length === 0) output = `${index}`;
-
-      this.outputArray = [...this.outputArray, output]
+      this.outputArray = [...this.outputArray, this.#output.buzzfizz(index, this.formControls.fizz.value, this.formControls.buzz.value)];
     }
 
   }

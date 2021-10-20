@@ -13,6 +13,8 @@ export class FibonacciComponent implements OnInit {
 
   public form!: FormGroup;
 
+  fibonacci: IFibonacchi = new IFibonacchi();
+
   get formControls(): { [key: string]: AbstractControl } {
     return this.form.controls
   }
@@ -30,10 +32,7 @@ export class FibonacciComponent implements OnInit {
     this.outputArray = [];
 
     for (let index = 0; index < this.formControls.upToValue.value; index++) {
-      let output: IFibonacchi = new IFibonacchi();
-
-
-      this.outputArray = [...this.outputArray, output.fibo(index)];
+      this.outputArray = [...this.outputArray, this.fibonacci.fibo(index)];
     }
   }
 }
