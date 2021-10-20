@@ -1,0 +1,59 @@
+<form class="example-form" [formGroup]="form" (ngSubmit)="buzzFizz()">
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Value</mat-label>
+          <input matInput formControlName="upToValue" type="number">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Divisible by 3 print</mat-label>
+          <input matInput formControlName="fizz">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Divisible by 5 print</mat-label>
+          <input matInput formControlName="buzz">
+        </mat-form-field>
+      </td>
+
+    </tr>
+    <tr>
+      <td>
+        <button mat-stroked-button color="primary" type="submit" [disabled]="form.invalid"> Play</button>
+      </td>
+    </tr>
+  </table>
+
+  <div id="fizz-buzz" *ngIf="outputArray.length">
+    <div id="fizz-buzz-timeline-bar">
+    </div>
+    <div id="fizz-buzz-items">
+
+      <div class="item" *ngFor="let item of outputArray">
+        <h1 class="background-text">{{item}}</h1>
+        <h1 class="text">{{item}}</h1>
+        <div class="bar">
+          <div class="dot dot-1"></div>
+          <div class="dot dot-2"></div>
+          <div class="dot dot-3"></div>
+        </div>
+        <div class="dot">
+          <div class="center"></div>
+          <div class="ring"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</form>

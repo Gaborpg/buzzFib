@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'buzzFib';
+  options = {
+    bottom: 0,
+    fixed: true,
+    top: 0
+  };
 }

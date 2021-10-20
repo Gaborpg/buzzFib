@@ -1,0 +1,20 @@
+<form class="example-form" [formGroup]="form" (ngSubmit)="fibon()">
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Value</mat-label>
+          <input matInput formControlName="upToValue" type="number">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button mat-stroked-button color="primary" type="submit" [disabled]="form.invalid"> Play</button>
+      </td>
+    </tr>
+  </table>
+
+  <div *ngFor="let item of outputArray" class="piramid">{{item}}</div>
+
+</form>
