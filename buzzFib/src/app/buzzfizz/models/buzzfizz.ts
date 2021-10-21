@@ -1,23 +1,31 @@
 export class IBuzzFizz {
 
   #memorize: Map<number, string> = new Map<number, string>();
+  public fizz = 'Fizz';
+  public buzz = 'Buzz';
 
   public buzzfizz(n: number, fizz: string, buzz: string): string {
+    if (this.fizz !== fizz || this.buzz !== buzz) {
+      this.#memorize.clear();
+      this.fizz = fizz;
+      this.buzz = buzz;
+    }
 
     if (!this.#memorize.has(n)) {
-      this.#memorize.set(n, this.#checkBuzzFizz(n, fizz, buzz));
+      this.#checkBuzzFizz(n)
+
     }
     return this.#memorize.get(n)!;
 
   }
 
-  #checkBuzzFizz(n: number, fizz: string, buzz: string) {
+  #checkBuzzFizz(n: number) {
     let output: string = '';
 
-    if (n % 3 === 0) { output += fizz; }
-    if (n % 5 === 0) { output += buzz; }
+    if (n % 3 === 0) { output += this.fizz; }
+    if (n % 5 === 0) { output += this.buzz; }
     if (output.length === 0) output = `${n}`;
 
-    return output
+    this.#memorize.set(n, output);
   }
 }
