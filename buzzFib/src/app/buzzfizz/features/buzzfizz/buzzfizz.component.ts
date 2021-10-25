@@ -20,12 +20,14 @@ export class BuzzfizzComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
+
   ngOnInit(): void {
     this.form = this.fb.group({
       upToValue: [20, [Validators.required, Validators.max(100), Validators.min(20)]],
       fizz: [this.#output.fizz, [Validators.required]],
-      buzz: [this.#output.buzz, [Validators.required]],
+      buzz: [this.#output.buzz, [Validators.required]]
     });
+
   }
 
 
